@@ -33,6 +33,11 @@
 #include <vector>
 #include <cstddef>
 
+#ifdef __GNUC__
+#  pragma GCC diagnostic ignored "-Wunused-parameter"
+#  pragma GCC diagnostic push
+#endif
+
 namespace rttr
 {
 class type;
@@ -93,5 +98,9 @@ class RTTR_API array_wrapper_base
 
 } // end namespace detail
 } // end namespace rttr
+
+#ifdef __GNUC__
+#  pragma GCC diagnostic pop
+#endif
 
 #endif // RTTR_ARRAY_WRAPPER_BASE_H_

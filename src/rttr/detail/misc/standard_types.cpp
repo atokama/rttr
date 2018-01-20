@@ -75,9 +75,9 @@ RTTR_REGISTRATION
                 .constructor<const char*>()
                 .constructor<const char*, unsigned int>()
                 .constructor<unsigned int, char>()
-                .method("length",       &std::string::length)
-                .method("size",         &std::string::size)
-                .method("empty",        &std::string::empty)
+                .method("length",       rttr::select_const(&std::string::length))
+                .method("size",         rttr::select_const(&std::string::size))
+                .method("empty",        rttr::select_const(&std::string::empty))
 #if RTTR_COMPILER == RTTR_COMPILER_MSVC && RTTR_ARCH_TYPE == RTTR_ARCH_32
                 .method("at",           static_cast<char&(std::string::*)(std::size_t)>(&std::string::at))
                 .method("at",           static_cast<const char&(std::string::*)(std::size_t) const>(&std::string::at))
@@ -89,6 +89,6 @@ RTTR_REGISTRATION
                 .method("operator[]",   rttr::select_overload<char&(size_t)>(&std::string::operator[]))
                 .method("operator[]",   rttr::select_non_const(&std::string::operator[]))
 #endif
-                .method("data",         &std::string::data)
-                .method("c_str",        &std::string::c_str);
+                .method("data",         rttr::select_const(&std::string::data))
+                .method("c_str",        rttr::select_const(&std::string::c_str));
 }

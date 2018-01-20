@@ -30,6 +30,11 @@
 
 #include "rttr/detail/variant_associative_view/variant_associative_view_private.h"
 
+#ifdef __GNUC__
+#  pragma GCC diagnostic ignored "-Wunused-parameter"
+#  pragma GCC diagnostic push
+#endif
+
 namespace rttr
 {
 namespace detail
@@ -57,5 +62,9 @@ create_variant_associative_view(T&& value)
 
 } // end namespace detail
 } // end namespace rttr
+
+#ifdef __GNUC__
+#  pragma GCC diagnostic pop
+#endif
 
 #endif // RTTR_VARIANT_ASSOCIATIVE_CREATOR_IMPL_H_

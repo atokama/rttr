@@ -41,6 +41,11 @@
 #include <array>
 #include <initializer_list>
 
+#ifdef __GNUC__
+#  pragma GCC diagnostic ignored "-Wunused-parameter"
+#  pragma GCC diagnostic push
+#endif
+
 namespace rttr
 {
 namespace detail
@@ -931,5 +936,9 @@ struct sequential_container_empty
 
 } // end namespace detail
 } // end namespace rttr
+
+#ifdef __GNUC__
+#  pragma GCC diagnostic pop
+#endif
 
 #endif // RTTR_SEQUENTIAL_MAPPER_IMPL_H_

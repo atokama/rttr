@@ -34,6 +34,11 @@
 #include "rttr/argument.h"
 #include <type_traits>
 
+#ifdef __GNUC__
+#  pragma GCC diagnostic ignored "-Wunused-parameter"
+#  pragma GCC diagnostic push
+#endif
+
 namespace rttr
 {
 
@@ -82,5 +87,9 @@ using create_variant_func = conditional_t<detail::pointer_count<T>::value == 1,
 
 } // end namespace detail
 } // end namespace rttr
+
+#ifdef __GNUC__
+#  pragma GCC diagnostic pop
+#endif
 
 #endif // RTTR_GET_CREATE_VARIANT_FUNC_H_
